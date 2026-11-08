@@ -76,25 +76,25 @@ func getInstance() *tinylogger {
 
 func AddTrace(v ...interface{}) {
 	tl := getInstance()
-	tl.Trace.Println(v)
+	tl.Trace.Println(v...)
 	postLog(TRACE, "TRACE: ", v)
 }
 
 func AddInfo(v ...interface{}) {
 	tl := getInstance()
-	tl.Info.Println(v)
+	tl.Info.Println(v...)
 	postLog(INFO, "INFO:", v)
 }
 
 func AddWarning(v ...interface{}) {
 	tl := getInstance()
-	tl.Warning.Println(v)
+	tl.Warning.Println(v...)
 	postLog(WARNING, "WARN: ", v)
 }
 
 func AddError(v ...interface{}) {
 	tl := getInstance()
-	tl.Error.Println(v)
+	tl.Error.Println(v...)
 	postLog(ERROR, "ERROR: ", v)
 }
 
@@ -127,8 +127,8 @@ func createDestinationFile(filename string) *os.File {
 
 func postLog(verbosityLevel VerbosityLevelType, logText ...interface{}) {
 	if config.verbose == ALL {
-		fmt.Println(logText)
+		fmt.Println(logText...)
 	} else if verbosityLevel == config.verbose || verbosityLevel == ERROR {
-		fmt.Println(logText)
+		fmt.Println(logText...)
 	}
 }

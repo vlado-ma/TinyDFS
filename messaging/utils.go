@@ -2,9 +2,10 @@ package messaging
 
 import (
 	"encoding/json"
-	"github.com/vlado-github/tinydfs/logging"
 	"os"
 	"path/filepath"
+
+	"github.com/vlado-github/tinydfs/logging"
 )
 
 func decodeMessage(message *Message, dec *json.Decoder) error {
@@ -15,6 +16,8 @@ func decodeMessage(message *Message, dec *json.Decoder) error {
 	return err
 }
 
+// Converts Json to byte stream and sends over the newtwork connection
+// that is set in Encoder
 func encodeMessage(message *Message, enc *json.Encoder) error {
 	err := enc.Encode(message)
 	if err != nil {
