@@ -34,17 +34,17 @@ func getParams() []string {
 	params := make([]string, 3)
 	if len(os.Args) > 1 {
 		arg0 := os.Args[1]
-		if arg0 == "-help" || arg0 == "-h" {
+		if arg0 == "--help" || arg0 == "-h" {
 			printHelp()
 		} else {
 			arg1 := os.Args[2]
 			arg2 := os.Args[3]
 			arg3 := os.Args[4]
 			arg4 := os.Args[5]
-			if (arg0 == "-listen" || arg0 == "-l") && arg1 != "" {
+			if (arg0 == "--listen" || arg0 == "-l") && arg1 != "" {
 				params[0] = arg1
 			}
-			if (arg2 == "-connect" || arg2 == "-c") && arg3 != "" && arg4 != "" {
+			if (arg2 == "--connect" || arg2 == "-c") && arg3 != "" && arg4 != "" {
 				params[1] = arg3
 				params[2] = arg4
 			}

@@ -27,7 +27,17 @@ make
 Run command within the root repository directory:
 
 ```bash
-./build/tinydfs -listen <port> -connect <ip_address> <port>
+./build/tinydfs --listen <port> --connect <ip_address> <port>
+```
+
+For example:
+```bash
+#main node (linux os)
+./tinydfs-amd64-linux -l 22001 -c 192.168.100.42 22001
+#other node (linux os)
+./tinydfs-amd64-linux -l 22002 -c 192.168.100.42 22001
+#other node (linux os)
+./tinydfs-amd64-linux -l 22003 -c 192.168.100.42 22001
 ```
 
 ## Tests

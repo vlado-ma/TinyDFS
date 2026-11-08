@@ -18,18 +18,18 @@ func init() {
 
 func TestMain(m *testing.M) {
 	// setup
-	var masterNode = NewNode(queueConnParams, true)
-	go masterNode.Run()
+	var mainNode = NewNode(queueConnParams, queueConnParams, true)
+	go mainNode.Run()
 	go func() {
 		retCode := m.Run()
 		//cleanup
-		masterNode.CloseConn()
+		mainNode.CloseConn()
 		os.Exit(retCode)
 	}()
 }
 
 func TestConnectingToQueue(t *testing.T) {
-	var node = NewNode(queueConnParams, false)
+	var node = NewNode(queueConnParams, queueConnParams, false)
 	err := node.Run()
 	if err != nil {
 		t.Fail()
@@ -37,17 +37,17 @@ func TestConnectingToQueue(t *testing.T) {
 }
 
 func TestSendingToQueue(t *testing.T) {
-	var node = NewNode(queueConnParams, false)
+	var node = NewNode(queueConnParams, queueConnParams, false)
 	err := node.Run()
 	if err != nil {
 		t.Fail()
 	}
-	var message = Message{Key: uuid.New(), Topic: "Test", Text: "Hello world!"}
+	var message = Message{Key: uuid.New(), Topic: "Test", Payload: []byte("Hello world!")}
 	node.SendMessage(message)
 }
 
 func TestCloseNode(t *testing.T) {
-	var node = NewNode(queueConnParams, false)
+	var node = NewNode(queueConnParams, queueConnParams, false)
 	err := node.Run()
 	if err != nil {
 		t.Fail()

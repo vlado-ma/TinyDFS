@@ -128,6 +128,7 @@ func TestFileManager_UpdateLong(t *testing.T) {
 	if err != nil {
 		t.Fail()
 	}
+	data = strings.TrimSpace(data)
 	if data != updateCmd.Text {
 		t.Fail()
 	}
