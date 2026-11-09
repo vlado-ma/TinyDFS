@@ -32,11 +32,11 @@ Run command within the root repository directory:
 
 For example:
 ```bash
-#main node (linux os)
+#leader node (linux os)
 ./tinydfs-amd64-linux -l 22001 -c 192.168.100.42 22001
-#other node (linux os)
+#follower node (linux os)
 ./tinydfs-amd64-linux -l 22002 -c 192.168.100.42 22001
-#other node (linux os)
+#follower node (linux os)
 ./tinydfs-amd64-linux -l 22003 -c 192.168.100.42 22001
 ```
 
